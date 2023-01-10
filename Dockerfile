@@ -20,6 +20,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-ins
     vim \
     x11-xserver-utils \
     xterm \
+    python3 \
+    python3-pip \
  && rm -rf /var/lib/apt/lists/* \
  && touch /etc/network/interfaces \
  && chmod +x /ENTRYPOINT.sh
