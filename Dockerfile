@@ -1,11 +1,11 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 
 USER root
 WORKDIR /root
 
 COPY ENTRYPOINT.sh /
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-install-recommends \
     curl \
     dnsutils \
     ifupdown \
