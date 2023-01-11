@@ -6,19 +6,21 @@ A Docker image for [Mininet](http://mininet.org/) forked from [iwaseyusuke/docke
 
 Mininet Docker image can be built as `docker build -t mininet .` and run as
 
-```bash
+```console
 docker run -it --rm --privileged -e DISPLAY \
              -v /tmp/.X11-unix:/tmp/.X11-unix \
              -v /lib/modules:/lib/modules \
+             -v $(pwd):/data \
              mininet
 ```
+Contents of the current working directory are then available in `/data`.
 
-### Open X Window applications in containers
+#### Open X Window applications in containers
 
 If you could not open `xterm` or other X Window applications, or faced to the
 following error message:
 
-```bash
+```console
 root@26f36691a400:~# xterm
 No protocol specified
 Warning: This program is an suid-root program or is being run by the root user.
@@ -31,7 +33,7 @@ xterm: Xt error: Can't open display: %s
 Please, add `root` user to the local access control list of xhost on your
 "Docker host" (not on your containers).
 
-```bash
+```console
 $ xhost +si:localuser:root
 localuser:root being added to access control list
 ```
